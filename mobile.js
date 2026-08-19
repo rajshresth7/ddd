@@ -65,7 +65,7 @@ class Paper {
       this.touchStartY = e.touches[0].clientY;
       this.prevTouchX = this.touchStartX;
       this.prevTouchY = this.touchStartY;
-    });
+    }, { passive: false });
     paper.addEventListener('touchend', () => {
       this.holdingPaper = false;
       this.rotating = false;
