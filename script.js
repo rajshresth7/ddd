@@ -10,7 +10,7 @@ class Paper {
 
   init(paper) {
     paper.addEventListener('pointerdown', (event) => {
-      if (event.button !== 0) return;
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
 
       this.holdingPaper = true;
       this.previousX = event.clientX;
@@ -21,7 +21,7 @@ class Paper {
     });
 
     paper.addEventListener('pointermove', (event) => {
-      if (!this.holdingPaper) return;
+      if (!this.holdingPaper || event.pointerType !== 'mouse') return;
 
       this.currentPaperX += event.clientX - this.previousX;
       this.currentPaperY += event.clientY - this.previousY;
@@ -31,6 +31,7 @@ class Paper {
     });
 
     const stopDragging = (event) => {
+      if (event.pointerType !== 'mouse') return;
       this.holdingPaper = false;
       if (paper.hasPointerCapture(event.pointerId)) {
         paper.releasePointerCapture(event.pointerId);
