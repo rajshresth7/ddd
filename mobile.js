@@ -1,3 +1,4 @@
+(() => {
 let highestZ = 1;
 
 class Paper {
@@ -88,3 +89,4 @@ papers.forEach(paper => {
   const p = new Paper();
   p.init(paper);
 });
+})();
