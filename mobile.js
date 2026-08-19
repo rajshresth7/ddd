@@ -55,6 +55,7 @@ class Paper {
 
     paper.addEventListener('touchstart', (e) => {
       if(this.holdingPaper) return; 
+      e.preventDefault();
       this.holdingPaper = true;
       
       paper.style.zIndex = highestZ;
